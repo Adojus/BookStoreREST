@@ -3,11 +3,11 @@ package com.bookstore.BookStore.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Book {
-    private String name;
-    private String author;
-    private String barcode;
-    private int quantity;
-    private double price;
+    private final String name;
+    private final String author;
+    private final String barcode;
+    private final int quantity;
+    private final double price;
 
     public Book(@JsonProperty("name") String name,
                 @JsonProperty("author") String author,

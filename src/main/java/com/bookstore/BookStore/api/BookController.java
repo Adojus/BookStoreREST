@@ -26,4 +26,15 @@ public class BookController {
     public List<Book> getAllBooks(){
         return bookService.getAllBooks();
     }
+
+    @GetMapping(path = "{barcode}")
+    public Book getBookByBarcode(@PathVariable("barcode") String barcode){
+        return bookService.getBookByBarcode(barcode)
+                .orElse(null);
+    }
+
+    @PutMapping(path = "{barcode}")
+    public void updateBook(@PathVariable("barcode") String barcode, @RequestBody Book bookToUpdate){
+        bookService.updateBook(barcode, bookToUpdate);
+    }
 }

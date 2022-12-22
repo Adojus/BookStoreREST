@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -23,5 +24,13 @@ public class BookService {
 
     public List<Book> getAllBooks(){
         return bookDao.selectAllBooks();
+    }
+
+    public Optional<Book> getBookByBarcode(String barcode){
+        return bookDao.selectBookByBarcode(barcode);
+    }
+
+    public int updateBook(String barcode, Book newBook){
+        return bookDao.updateBookByBarcode(barcode, newBook);
     }
 }
