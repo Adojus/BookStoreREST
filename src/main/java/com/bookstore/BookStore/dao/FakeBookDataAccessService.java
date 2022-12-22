@@ -46,4 +46,10 @@ public class FakeBookDataAccessService implements BookDao {
                 .orElse(0);
     }
 
+    @Override
+    public Optional<Book> calculateTotalPrice(String barcode) {
+        return DB.stream()
+                .filter(book -> book.getBarcode().equals(barcode))
+                .findFirst();
+    }
 }

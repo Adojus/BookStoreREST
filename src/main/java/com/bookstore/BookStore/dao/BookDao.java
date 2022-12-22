@@ -15,5 +15,5 @@ public interface BookDao {
 
     int updateBookByBarcode(String barcode, Book book);
 
-
+    Optional<Book> calculateTotalPrice(String barcode);
 }

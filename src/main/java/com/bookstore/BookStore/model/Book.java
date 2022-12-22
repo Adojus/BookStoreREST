@@ -2,6 +2,7 @@ package com.bookstore.BookStore.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class Book {
     private final String name;
     private final String author;
@@ -39,5 +40,9 @@ public class Book {
 
     public double getPrice() {
         return price;
+    }
+
+    public double calculateTotalPrice(){
+        return (double)Math.round((price*quantity)*100)/100;
     }
 }

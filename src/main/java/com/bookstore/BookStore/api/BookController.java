@@ -37,4 +37,10 @@ public class BookController {
     public void updateBook(@PathVariable("barcode") String barcode, @RequestBody Book bookToUpdate){
         bookService.updateBook(barcode, bookToUpdate);
     }
+
+    @GetMapping(path = "{barcode}/totalPrice")
+    public double getTotalPriceByBarcode(@PathVariable("barcode") String barcode){
+        return bookService.getPriceByBarcode(barcode)
+                .orElse(null).calculateTotalPrice();
+    }
 }

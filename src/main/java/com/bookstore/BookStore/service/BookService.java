@@ -33,4 +33,8 @@ public class BookService {
     public int updateBook(String barcode, Book newBook){
         return bookDao.updateBookByBarcode(barcode, newBook);
     }
+
+    public Optional<Book> getPriceByBarcode(String barcode){
+        return bookDao.calculateTotalPrice(barcode);
+    }
 }
