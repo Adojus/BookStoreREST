@@ -1,5 +1,6 @@
 package com.bookstore.BookStore.dao;
 
+import com.bookstore.BookStore.model.AntiqueBook;
 import com.bookstore.BookStore.model.Book;
 
 import java.util.List;

@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Book {
-    private final String name;
-    private final String author;
-    private final String barcode;
-    private final int quantity;
-    private final double price;
+    protected final String name;
+    protected final String author;
+    protected final String barcode;
+    protected final int quantity;
+    protected final double price;
 
     public Book(@JsonProperty("name") String name,
                 @JsonProperty("author") String author,

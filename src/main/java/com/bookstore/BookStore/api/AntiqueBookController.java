@@ -1,6 +1,8 @@
 package com.bookstore.BookStore.api;
 
+import com.bookstore.BookStore.model.AntiqueBook;
 import com.bookstore.BookStore.model.Book;
+import com.bookstore.BookStore.service.AntiqueBookService;
 import com.bookstore.BookStore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,34 +10,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("books")
+@RequestMapping("antiqueBooks")
 @RestController
-public class BookController {
-    private final BookService bookService;
+public class AntiqueBookController {
+    private final AntiqueBookService bookService;
 
     @Autowired
-    public BookController(BookService bookService) {
+    public AntiqueBookController(AntiqueBookService bookService) {
         this.bookService = bookService;
     }
 
     @PostMapping
-    public void addBook(@RequestBody Book book){
+    public void addBook(@RequestBody AntiqueBook book){
         bookService.addBook(book);
     }
 
     @GetMapping
-    public List<Book> getAllBooks(){
+    public List<AntiqueBook> getAllBooks(){
         return bookService.getAllBooks();
     }
 
     @GetMapping(path = "{barcode}")
-    public Book getBookByBarcode(@PathVariable("barcode") String barcode){
+    public AntiqueBook getBookByBarcode(@PathVariable("barcode") String barcode){
         return bookService.getBookByBarcode(barcode)
                 .orElse(null);
     }
 
     @PutMapping(path = "{barcode}")
-    public void updateBook(@PathVariable("barcode") String barcode, @RequestBody Book bookToUpdate){
+    public void updateBook(@PathVariable("barcode") String barcode, @RequestBody AntiqueBook bookToUpdate){
         bookService.updateBook(barcode, bookToUpdate);
     }
 
@@ -46,7 +48,7 @@ public class BookController {
     }
 
     @GetMapping(path = "grouped")
-    public Map<Integer, List<Book>> getAllBooksGrouped(){
+    public Map<Integer, List<AntiqueBook>> getAllBooksGrouped(){
         return bookService.getAllBooksGrouped();
     }
 }
