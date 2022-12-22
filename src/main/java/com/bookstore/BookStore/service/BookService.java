@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -36,5 +37,9 @@ public class BookService {
 
     public Optional<Book> getPriceByBarcode(String barcode){
         return bookDao.calculateTotalPrice(barcode);
+    }
+
+    public Map<Integer, List<Book>> getAllBooksGrouped(){
+        return bookDao.selectAllBooksGrouped();
     }
 }

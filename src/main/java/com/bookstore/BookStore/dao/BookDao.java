@@ -3,6 +3,7 @@ package com.bookstore.BookStore.dao;
 import com.bookstore.BookStore.model.Book;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface BookDao {
@@ -16,4 +17,6 @@ public interface BookDao {
     int updateBookByBarcode(String barcode, Book book);
 
     Optional<Book> calculateTotalPrice(String barcode);
+
+    Map<Integer,List<Book>> selectAllBooksGrouped();
 }

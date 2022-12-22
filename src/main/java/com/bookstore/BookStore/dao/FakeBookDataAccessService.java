@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository("fakeDao")
 public class FakeBookDataAccessService implements BookDao {
@@ -51,5 +53,12 @@ public class FakeBookDataAccessService implements BookDao {
         return DB.stream()
                 .filter(book -> book.getBarcode().equals(barcode))
                 .findFirst();
+    }
+
+    @Override
+    public Map<Integer, List<Book>> selectAllBooksGrouped() {
+        Map<Integer, List<Book>> mapByQuantity =
+                DB.stream().collect(Collectors.groupingBy(Book::getQuantity));
+        return mapByQuantity;
     }
 }

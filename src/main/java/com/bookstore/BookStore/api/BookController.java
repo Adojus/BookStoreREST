@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("api/v1/book")
 @RestController
@@ -42,5 +43,10 @@ public class BookController {
     public double getTotalPriceByBarcode(@PathVariable("barcode") String barcode){
         return bookService.getPriceByBarcode(barcode)
                 .orElse(null).calculateTotalPrice();
+    }
+
+    @GetMapping(path = "grouped")
+    public Map<Integer, List<Book>> getAllBooksGrouped(){
+        return bookService.getAllBooksGrouped();
     }
 }
